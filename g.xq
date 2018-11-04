@@ -6,14 +6,7 @@
 		   where $p[@gender='M']
 		   return $p)
    let $f := count($dems) - $m
-   return element {'Democrat'} {
-	element {'M'} {
-	   attribute count {$m}
-	},
-	element {'F'} {
-	   attribute count {$f}
-	}
-   }
+   return <Democrat><M count="{$m}"/><F count="{$f}"/></Democrat>
 }
 {
    let $reps := (for $b in /congress/people/person
@@ -23,14 +16,7 @@
 	 	   where $p[@gender='M']
 		   return $p)
    let $f := count($reps) - $m
-   return element {'Republican'} {
-	element {'M'} {
-	   attribute count {$m}
-	},
-	element {'F'} {
-	   attribute count {$f}
-	}
-   }
+   return <Republican><M count="{$m}"/><F count="{$f}"/></Republican> 
 }
 {
    let $ind := (for $b in /congress/people/person
@@ -40,12 +26,5 @@
 		   where $p[@gender='M']
 		   return $p)
    let $f := count($ind) - $m
-   return element {'Independent'} {
-	element {'M'} {
-	   attribute count {$m}
-	},
-	element {'F'} {
-	   attribute count {$f}
-	}
-   }
+   return <Independent><M count="{$m}"/><F count="{$f}"/></Independent>
 } </result>
