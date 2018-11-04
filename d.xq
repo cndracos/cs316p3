@@ -4,5 +4,5 @@
 	     where (every $r in $b/../role[@type='rep'] satisfies xs:date($s/@startdate) > xs:date($r/@startdate))
 	     return xs:date($s/@startdate))
    stable order by $p
-   return <senator first_start="{$p}" party="{$b/@party}"> {$b/../@name} </senator>
+   return  <senator first_start="{$p}" party="{$b/@party}">{string($b/../@name)}</senator>
 } </result>
