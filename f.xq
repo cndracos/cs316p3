@@ -1,5 +1,5 @@
 <result> {
   for $b in /congress/people/person
-  where (every $p in /congress/committees//member satisfies not($p[@id = $b/@id]))
-  return <person>{$b/@name}</person>
+  where not (some $p in //member satisfies ($p[@id = $b/@id]))
+  return <person>{string($b/@name)}</person>
 } </result>
