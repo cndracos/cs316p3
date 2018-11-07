@@ -4,8 +4,8 @@
 		    return $b)
    let $m := count(for $p in $dems
 		   where $p[@gender='M']
-		   return $p)
-   let $f := count($dems) - $m
+		   return $p) - 1
+   let $f := count($dems) - $m - 1
    return <Democrat><M count="{$m}"/><F count="{$f}"/></Democrat>
 }
 {
@@ -24,7 +24,7 @@
 		return $b)
    let $m := count(for $p in $ind
 		   where $p[@gender='M']
-		   return $p)
-   let $f := count($ind) - $m
+		   return $p) - 1
+   let $f := count($ind) - $m - 1
    return <Independent><M count="{$m}"/><F count="{$f}"/></Independent>
 } </result>
